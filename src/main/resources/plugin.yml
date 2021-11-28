@@ -1,0 +1,11 @@
+name: PummesPlugin
+version: '${project.version}'
+main: de.pummes.plugin.PummesPlugin
+api-version: 1.17
+authors: [ jetztmachtsbumm ]
+description: Pummes
+website: https://github.com/jetztmachtsbumm/PummesPlugin
+
+commands:
+  cords:
+  arschbohrer:
