@@ -1,5 +1,6 @@
 package de.pummes.plugin;
 
+import de.pummes.plugin.commands.ColorHelpCommand;
 import de.pummes.plugin.commands.CordsCommand;
 import de.pummes.plugin.commands.OneWayElytraCommand;
 import de.pummes.plugin.listeners.PlayerChatListener;
@@ -24,6 +25,7 @@ public final class PummesPlugin extends JavaPlugin {
 
         getCommand("cords").setExecutor(new CordsCommand());
         getCommand("onewayelytra").setExecutor(new OneWayElytraCommand());
+        getCommand("colorhelp").setExecutor(new ColorHelpCommand());
     }
 
 }
