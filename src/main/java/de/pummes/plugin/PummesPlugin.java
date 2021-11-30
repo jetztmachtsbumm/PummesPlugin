@@ -41,7 +41,7 @@ public final class PummesPlugin extends JavaPlugin {
         ItemStack teleporter = new ItemStack(Material.BEDROCK);
 
         ItemMeta meta = teleporter.getItemMeta();
-        meta.setDisplayName("§eTeleporter");
+        meta.setDisplayName("Teleporter");
         meta.addEnchant(Enchantment.LURE, 1, false);
         meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         teleporter.setItemMeta(meta);
@@ -61,7 +61,7 @@ public final class PummesPlugin extends JavaPlugin {
     private void spawnTeleporterParticles(){
         getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
             for(String key : getConfig().getKeys(false)){
-                getServer().getWorld("world").spawnParticle(Particle.DUST_COLOR_TRANSITION, new Location(getServer().getWorld("world"), getConfig().getDouble(key + ".X"), getConfig().getDouble(key + ".Y"), getConfig().getDouble(key + ".Z")).add(0.5, 1, 0.5), 1, new Particle.DustTransition(Color.PURPLE, Color.FUCHSIA, 10));
+                getServer().getWorld(getConfig().getString(key + ".World")).spawnParticle(Particle.DUST_COLOR_TRANSITION, new Location(getServer().getWorld("world"), getConfig().getDouble(key + ".X"), getConfig().getDouble(key + ".Y"), getConfig().getDouble(key + ".Z")).add(0.5, 1, 0.5), 1, new Particle.DustTransition(Color.PURPLE, Color.FUCHSIA, 10));
             }
         }, 0, 5);
     }

@@ -14,7 +14,17 @@ public class PlayerUseTeleporterListener implements Listener {
     public void handlePlayerUseTeleporter(PlayerInteractEvent e){
         if(e.getClickedBlock() != null && e.getClickedBlock().getType() == Material.BEDROCK){
             if(isTeleporter(e.getClickedBlock().getLocation())){
-                e.getPlayer().openInventory(TeleporterInventory.get());
+                switch (e.getPlayer().getLocation().getWorld().getName()){
+                    case "world":
+                        e.getPlayer().openInventory(TeleporterInventory.getInvOverworld());
+                        break;
+                    case "world_nether":
+                        e.getPlayer().openInventory(TeleporterInventory.getInvNether());
+                        break;
+                    case "world_the_end":
+                        e.getPlayer().openInventory(TeleporterInventory.getInvEnd());
+                        break;
+                }
                 e.setCancelled(true);
             }
         }
