@@ -18,16 +18,14 @@ public class TeleporterInventory {
     private static void setupInvOverworld(){
         invOverworld.clear();
         for(String key : PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getKeys(false)){
-            if(!key.equalsIgnoreCase("TeleportersPlacedByPlayers")) {
-                if (PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getString(key + ".World").equalsIgnoreCase("world")) {
-                    ItemStack teleporter = new ItemStack(Material.PAPER);
-                    ItemMeta meta = teleporter.getItemMeta();
-                    meta.setDisplayName(key);
-                    meta.addEnchant(Enchantment.LURE, 1, false);
-                    meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-                    teleporter.setItemMeta(meta);
-                    invOverworld.addItem(teleporter);
-                }
+            if(PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getString(key + ".World").equalsIgnoreCase("world")) {
+                ItemStack teleporter = new ItemStack(Material.PAPER);
+                ItemMeta meta = teleporter.getItemMeta();
+                meta.setDisplayName(key);
+                meta.addEnchant(Enchantment.LURE, 1, false);
+                meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                teleporter.setItemMeta(meta);
+                invOverworld.addItem(teleporter);
             }
         }
     }
@@ -35,16 +33,14 @@ public class TeleporterInventory {
     private static void setupInvNether(){
         invNether.clear();
         for(String key : PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getKeys(false)){
-            if(!key.equalsIgnoreCase("TeleportersPlacedByPlayers")) {
-                if (PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getString(key + ".World").equalsIgnoreCase("world_nether")) {
-                    ItemStack teleporter = new ItemStack(Material.PAPER);
-                    ItemMeta meta = teleporter.getItemMeta();
-                    meta.setDisplayName(key);
-                    meta.addEnchant(Enchantment.LURE, 1, false);
-                    meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-                    teleporter.setItemMeta(meta);
-                    invNether.addItem(teleporter);
-                }
+            if( PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getString(key + ".World").equalsIgnoreCase("world_nether")) {
+                ItemStack teleporter = new ItemStack(Material.PAPER);
+                ItemMeta meta = teleporter.getItemMeta();
+                meta.setDisplayName(key);
+                meta.addEnchant(Enchantment.LURE, 1, false);
+                meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                teleporter.setItemMeta(meta);
+                invNether.addItem(teleporter);
             }
         }
     }
@@ -52,16 +48,14 @@ public class TeleporterInventory {
     private static void setupInvEnd(){
         invEnd.clear();
         for(String key : PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getKeys(false)){
-            if(!key.equalsIgnoreCase("TeleportersPlacedByPlayers")) {
-                if (PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getString(key + ".World").equalsIgnoreCase("world_the_end")) {
-                    ItemStack teleporter = new ItemStack(Material.PAPER);
-                    ItemMeta meta = teleporter.getItemMeta();
-                    meta.setDisplayName(key);
-                    meta.addEnchant(Enchantment.LURE, 1, false);
-                    meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
-                    teleporter.setItemMeta(meta);
-                    invEnd.addItem(teleporter);
-                }
+            if( PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getString(key + ".World").equalsIgnoreCase("world_the_end")) {
+                ItemStack teleporter = new ItemStack(Material.PAPER);
+                ItemMeta meta = teleporter.getItemMeta();
+                meta.setDisplayName(key);
+                meta.addEnchant(Enchantment.LURE, 1, false);
+                meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+                teleporter.setItemMeta(meta);
+                invEnd.addItem(teleporter);
             }
         }
     }

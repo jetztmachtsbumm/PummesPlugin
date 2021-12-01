@@ -17,15 +17,7 @@ public class PlayerPlaceTeleporterListener implements Listener {
                 e.getPlayer().sendMessage("§cEin Teleporter mit dem Namen §e" + e.getItemInHand().getItemMeta().getDisplayName() + "§c existiert bereits!");
                 e.getPlayer().sendMessage("§cBitte benenne deinen Teleporter an einem Amboss um.");
             }else {
-                if(PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getInt("TeleportersPlacedByPlayers." + e.getPlayer().getName()) < 2) {
-                    ConfigTeleporterUtil.saveNewTeleporter("§e" + e.getItemInHand().getItemMeta().getDisplayName(), e.getBlock().getLocation());
-                    if (PummesPlugin.getPlugin(PummesPlugin.class).getConfig().get("TeleportersPlacedByPlayers." + e.getPlayer().getName()) != null) {
-                        PummesPlugin.getPlugin(PummesPlugin.class).getConfig().set("TeleportersPlacedByPlayers." + e.getPlayer().getName(), PummesPlugin.getPlugin(PummesPlugin.class).getConfig().get("TeleportersPlacedByPlayers." + e.getPlayer().getName() + 1));
-                    } else {
-                        PummesPlugin.getPlugin(PummesPlugin.class).getConfig().set("TeleportersPlacedByPlayers." + e.getPlayer().getName(), 1);
-                    }
-                    PummesPlugin.getPlugin(PummesPlugin.class).saveConfig();
-                }
+                ConfigTeleporterUtil.saveNewTeleporter("§e" + e.getItemInHand().getItemMeta().getDisplayName(), e.getBlock().getLocation());
             }
         }
     }

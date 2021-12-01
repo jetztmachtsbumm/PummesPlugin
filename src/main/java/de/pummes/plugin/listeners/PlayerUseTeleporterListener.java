@@ -32,10 +32,8 @@ public class PlayerUseTeleporterListener implements Listener {
 
     private boolean isTeleporter(Location loc){
         for(String key : PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getKeys(false)){
-            if(!key.equalsIgnoreCase("TeleportersPlacedByPlayers")) {
-                if (PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getInt(key + ".X") == loc.getX() && PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getInt(key + ".Y") == loc.getY() && PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getInt(key + ".Z") == loc.getZ()) {
-                    return true;
-                }
+            if(PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getInt(key + ".X") == loc.getX() && PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getInt(key + ".Y") == loc.getY() && PummesPlugin.getPlugin(PummesPlugin.class).getConfig().getInt(key + ".Z") == loc.getZ()){
+                return true;
             }
         }
         return false;
