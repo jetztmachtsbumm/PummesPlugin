@@ -61,7 +61,9 @@ public final class PummesPlugin extends JavaPlugin {
     private void spawnTeleporterParticles(){
         getServer().getScheduler().scheduleSyncRepeatingTask(this, () -> {
             for(String key : getConfig().getKeys(false)){
-                getServer().getWorld(getConfig().getString(key + ".World")).spawnParticle(Particle.DUST_COLOR_TRANSITION, new Location(getServer().getWorld("world"), getConfig().getDouble(key + ".X"), getConfig().getDouble(key + ".Y"), getConfig().getDouble(key + ".Z")).add(0.5, 1, 0.5), 1, new Particle.DustTransition(Color.PURPLE, Color.FUCHSIA, 10));
+                if(!key.equalsIgnoreCase("TeleportersPlacedByPlayers")) {
+                    getServer().getWorld(getConfig().getString(key + ".World")).spawnParticle(Particle.DUST_COLOR_TRANSITION, new Location(getServer().getWorld("world"), getConfig().getDouble(key + ".X"), getConfig().getDouble(key + ".Y"), getConfig().getDouble(key + ".Z")).add(0.5, 1, 0.5), 1, new Particle.DustTransition(Color.PURPLE, Color.FUCHSIA, 10));
+                }
             }
         }, 0, 5);
     }
