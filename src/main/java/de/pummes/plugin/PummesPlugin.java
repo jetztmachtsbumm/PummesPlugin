@@ -18,10 +18,12 @@ import java.util.List;
 public final class PummesPlugin extends JavaPlugin {
 
     public static final List<String> oneWayElytraUsers = new ArrayList<>();
+    public static ItemStack teleporter = new ItemStack(Material.BEDROCK);
 
     @Override
     public void onEnable() {
         createTeleporterItem();
+        createTeleporterBreaker();
         spawnTeleporterParticles();
 
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(), this);
@@ -38,8 +40,6 @@ public final class PummesPlugin extends JavaPlugin {
     }
 
     private void createTeleporterItem(){
-        ItemStack teleporter = new ItemStack(Material.BEDROCK);
-
         ItemMeta meta = teleporter.getItemMeta();
         meta.setDisplayName("Teleporter");
         meta.addEnchant(Enchantment.LURE, 1, false);
@@ -54,6 +54,25 @@ public final class PummesPlugin extends JavaPlugin {
         recipe.setIngredient('G', Material.GLASS_PANE);
         recipe.setIngredient('N', Material.NETHERITE_INGOT);
         recipe.setIngredient('I', Material.IRON_BLOCK);
+
+        getServer().addRecipe(recipe);
+    }
+
+    private void createTeleporterBreaker(){
+        ItemStack breaker = new ItemStack(Material.DIAMOND_PICKAXE);
+
+        ItemMeta meta = breaker.getItemMeta();
+        meta.setDisplayName("§eTeleporter Breaker");
+        meta.addEnchant(Enchantment.LURE, 1, false);
+        meta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
+        breaker.setItemMeta(meta);
+
+        ShapedRecipe recipe = new ShapedRecipe(new NamespacedKey(this, "teleporter_breaker"), breaker);
+
+        recipe.shape("DDD", " B ", " B ");
+
+        recipe.setIngredient('D', Material.DIAMOND);
+        recipe.setIngredient('B', Material.BLAZE_ROD);
 
         getServer().addRecipe(recipe);
     }
